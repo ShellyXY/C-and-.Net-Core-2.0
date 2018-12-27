@@ -1,4 +1,6 @@
 ﻿using System;
+using System.IO;
+using System.Xml;
 
 namespace chapter2
 {
@@ -64,8 +66,42 @@ namespace chapter2
             //char letter = 'Z';
             //bool happy = true;
 
+            //var is using inside the method as the local variables
+            //The Conpiler will infer the  type from the literal value you assign after the assignment(=) operator.
             var population = 66_000_000;
-            var 
+            var weight = 1.88;
+            var price = 4.99M;
+            var fruit = "Apples";
+            var letter = 'Z';
+            var happy = true;
+
+            //good use of var
+            var xml1 = new XmlDocument();
+
+            //unnecessarily verbose repeating XmlDocument
+            XmlDocument xml2 = new XmlDocument();
+
+            //bad use of var; what data type is file1?
+            var file1 = File.CreateText(@"C:\something.txt");
+
+            //good use of a specific type declaration
+            StreamWriter file2 = File.CreateText(@"C:\something.txt");
+
+
+            Console.WriteLine($"{default(int)}");//0
+            Console.WriteLine($"{default(bool)}");//False
+            Console.WriteLine($"{default(DateTime)}");// 1/01/0001 00:00:00
+
+
+            //Nullable value type\
+            int ICannotBeNull = 4;
+            int? ICouldBeNull = null;
+            //本来Int是不能赋值为空值的，现在，加了?表示可以赋值为空值
+            Console.WriteLine(ICouldBeNull.GetValueOrDefault());//0
+            ICouldBeNull = 4;
+            Console.WriteLine(ICouldBeNull.GetValueOrDefault());//4
+
+
         }
     }
 }
