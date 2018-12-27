@@ -154,6 +154,26 @@ namespace chapter2
             string age = ReadLine();
             WriteLine($"Hello {firstName},you look good for{age}");
 
+            //arguments
+            WriteLine($"There are {args.Length} arguments.");
+
+            //Enumerating arguments
+            foreach (string arg in args)
+            {
+                WriteLine(arg);
+            }
+
+            ForegroundColor = (ConsoleColor)Enum.Parse(typeof(ConsoleColor), args[0], true);
+            BackgroundColor = (ConsoleColor)Enum.Parse(typeof(ConsoleColor), args[1], true);
+            WindowWidth = int.Parse(args[2]);
+            WindowHeight = int.Parse(args[3]);
+            WriteLine($"There are {args.Length} arguments.");
+            foreach (var arg in args)
+            {
+                WriteLine(arg);
+            }
+            ReadKey();
+
         }
     }
 }
