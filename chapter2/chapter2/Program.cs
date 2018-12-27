@@ -1,6 +1,7 @@
 ﻿using System;
 using System.IO;
 using System.Xml;
+using static System.Console;
 
 namespace chapter2
 {
@@ -8,19 +9,19 @@ namespace chapter2
     {
         static void Main(string[] args)
         {
-            //Console.WriteLine($"int uses {sizeof(int)} bytes and can store numbers int the range {int.MinValue:No} to {int.MaxValue:No}.");
+            //WriteLine($"int uses {sizeof(int)} bytes and can store numbers int the range {int.MinValue:No} to {int.MaxValue:No}.");
 
             //double a = 0.1;
             //double b = 0.2;
             //if (a + b == 0.3)
             //{
-            //    Console.WriteLine($"{a} + {b}");
+            //    WriteLine($"{a} + {b}");
             //}
             //else
             //{
-            //    Console.WriteLine("${a} + {b} does NOT equal 0.3");
+            //    WriteLine("${a} + {b} does NOT equal 0.3");
             //}
-            //Console.ReadKey();
+            //ReadKey();
             //System.Data.DataSet ds;
             //System.Net.Http.HttpClient Client;
             //foreach (var r in Assembly.GetEntryAssembly().GetReferencedAssemblies())
@@ -31,24 +32,24 @@ namespace chapter2
             //    {
             //        methodCount += t.GetMethods().Count();
             //    }
-            //    Console.WriteLine($"{a.DefinedTypes.Count():N0}types" + 
+            //    WriteLine($"{a.DefinedTypes.Count():N0}types" + 
             //        $"with {methodCount:No} methods in {r.Name} assembly.");
             //}
-            //Console.ReadKey();
+            //ReadKey();
 
 
             double heightInMetres = 1.88;
-            Console.WriteLine($"The variable {nameof(heightInMetres)} has the value { heightInMetres}.");
+            WriteLine($"The variable {nameof(heightInMetres)} has the value { heightInMetres}.");
 
             decimal c = 0.1M;
             decimal d = 0.2M;
             if (c + d == 0.3M)
             {
-                Console.WriteLine($"{c} + {d} equals 0.3");
+                WriteLine($"{c} + {d} equals 0.3");
             }
             else
             {
-                Console.WriteLine("${c} + {d} does NOT equal 0.3");
+                WriteLine("${c} + {d} does NOT equal 0.3");
             }
 
             //object height = 1.88;
@@ -88,19 +89,70 @@ namespace chapter2
             StreamWriter file2 = File.CreateText(@"C:\something.txt");
 
 
-            Console.WriteLine($"{default(int)}");//0
-            Console.WriteLine($"{default(bool)}");//False
-            Console.WriteLine($"{default(DateTime)}");// 1/01/0001 00:00:00
+            WriteLine($"{default(int)}");//0
+            WriteLine($"{default(bool)}");//False
+            WriteLine($"{default(DateTime)}");// 1/01/0001 00:00:00
 
 
             //Nullable value type\
             int ICannotBeNull = 4;
             int? ICouldBeNull = null;
             //本来Int是不能赋值为空值的，现在，加了?表示可以赋值为空值
-            Console.WriteLine(ICouldBeNull.GetValueOrDefault());//0
+            WriteLine(ICouldBeNull.GetValueOrDefault());//0
             ICouldBeNull = 4;
-            Console.WriteLine(ICouldBeNull.GetValueOrDefault());//4
+            WriteLine(ICouldBeNull.GetValueOrDefault());//4
 
+
+            //When storing information about an address, 
+            //you might want to force a value for the street, city, and region, but building can be left blank(that is, null)
+            /* class Address
+             {
+                 string? Building;//can be null
+                 string Street;//must have value;
+                 string City;      // must have a value
+                 string Region;    // must have a value
+             }
+             */
+
+            // check is myVariable is not null before using it 
+            if (ICouldBeNull != null)
+            {
+                // do something with ICouldBeNull 
+            }
+
+            //If you are trying to get a field or property from a variable that might be null, use the null check operator (?.)
+            string authorName = null;
+            //if authorName is null; instead of throwing an exception
+            //null is returned
+            int? howManyLetters = authorName?.Length;
+
+            // result will be three if howManyLetters is null
+            var result = howManyLetters ?? 3;
+            WriteLine(result);//如果howManyLetters为空值的话，就将3赋值给他
+
+            //-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+            //Array
+            //declaring the size of the array
+            string[] names = new string[4];
+            //storing items at index positions
+            names[0] = "Kate";
+            names[1] = "Jack";
+            names[2] = "Tom";
+            for (int i = 0; i < names.Length; i++)
+            {
+                WriteLine(names[i]);//read the item at this index
+            }
+
+            WriteLine($"The UK population is {population}.");
+            Write($"The UK population is {population:N0}. ");
+            WriteLine($"{weight}kg of {fruit} costs {price:C}.");
+
+            //Get input from the user
+            WriteLine("Type your first name and press ENTER");
+            string firstName = ReadLine();
+            Write("Type your age and press ENTER");
+            string age = ReadLine();
+            WriteLine($"Hello {firstName},you look good for{age}");
 
         }
     }
