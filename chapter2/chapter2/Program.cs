@@ -65,6 +65,7 @@ namespace chapter2
             //bool happy = true;
 
             var population = 66_000_000;
+            var 
         }
     }
 }
