@@ -38,6 +38,37 @@ namespace PeopleApp
                 WriteLine($"  {p1.Children[child].Name}");
             }
 
+            BankAccount.InterestRate = 0.012M;
+            var ba1 = new BankAccount();
+            ba1.AccountName = "Mrs.Jones";
+            ba1.Balance = 2400;
+            WriteLine($"{ba1.AccountName} earned {ba1.Balance*BankAccount.InterestRate:C} interest.");
+            var ba2 = new BankAccount();
+            ba2.AccountName = "Ms.Gerrier";
+            ba2.Balance = 98;
+            WriteLine($"{ba2.AccountName} earned {ba2.Balance * BankAccount.InterestRate:C} interest");
+
+            WriteLine($"{p1.Name} is a {Person.Species}");
+
+            var p3 = new Person();
+            WriteLine($"{p3.Name} was instantiated at {p3.Instantiated:hh:mm:ss} on {p3.Instantiated:dddd, d MMMM yyyy}");
+
+            var p4 = new Person("Aziz");
+            WriteLine($"{p4.Name} was instantiated at { p4.Instantiated:hh: mm: ss}   on { p4.Instantiated:dddd, d MMMM yyyy}");
+
+            p1.WriteToConsole();
+            WriteLine(p1.GetOrigin());
+
+            Tuple<string, int> fruit4 = p1.GetFruitCS4();
+            WriteLine($"There are {fruit4.Item1} {fruit4.Item2}.");
+
+            (string, int) fruit7 = p1.GetFruitCS7();
+            WriteLine($"{fruit7.Item1}, {fruit7.Item2} there are.");
+
+            var fruitNamed = p1.GetNamedFruit();
+            WriteLine($"Are there {fruitNamed.Number} {fruitNamed.Name}");
+
+
         }
     }
 }
