@@ -68,6 +68,56 @@ namespace PeopleApp
             var fruitNamed = p1.GetNamedFruit();
             WriteLine($"Are there {fruitNamed.Number} {fruitNamed.Name}");
 
+            //Deconstructing tuples
+            (string fruitName, int fruitNumber) = p1.GetFruitCS7();
+            WriteLine($"Deconstructed: {fruitName},{fruitNumber}");
+
+
+            //Defining and passing parameters to methods
+            WriteLine(p1.SayHello(""));
+            WriteLine(p1.SayHello("Emily"));
+
+            //Optional parameters and named arguments
+            WriteLine(p1.OptionalParameters());
+            p1.OptionalParameters("Jump!",98.5);
+
+            //the order they are passed through can be swapped around
+            p1.OptionalParameters(number:52.7,command:"Hide!");
+
+            //skips the number parameter
+            p1.OptionalParameters("Poke!",active:false);
+
+            //Controlling how parameters are passed
+            int a = 10;
+            int b = 20;
+            int c = 30;
+            WriteLine($"Before: a = {a}, b = {b}, c = {c}");
+            p1.PassingParameters(a, ref b, out c);
+            WriteLine($"After: a = {a}, b = {b}, c = {c}");
+
+            //Defining read-only properties
+            var sam = new Person
+            {
+                Name = "Sam",
+                DateOfBirth = new DateTime(1972, 1, 27)
+            };
+            WriteLine(sam.Origin);
+            WriteLine(sam.Greeting);
+            WriteLine(sam.Age);
+
+            //Defining settable properties
+            sam.FavoriteIceCream = "Chocoloate Fudge";
+            WriteLine($"Sam's favorite ice-cream flavor is {sam.FavoriteIceCream}.");
+            sam.FavoritePrimaryColor = "Red";
+            WriteLine($"Sam's favorite primary color is {sam.FavoritePrimaryColor}.");
+
+            //Defining indexers
+            sam.Children.Add(new Person {Name = "Charlie"});
+            sam.Children.Add(new Person {Name = "Ella"});
+            WriteLine($"Sam's first child is {sam.Children[0].Name}");
+            WriteLine($"Sam's second child is {sam.Children[1].Name}");
+            WriteLine($"Sam's first child is {sam[0].Name}");
+            WriteLine($"Sam's second child is {sam[1].Name}");
 
         }
     }
