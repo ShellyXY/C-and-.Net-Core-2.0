@@ -4,7 +4,7 @@ using static System.Console;
 
 namespace Packt.CS7
 {
-    public partial class Person
+    public partial class Person: IComparable<Person>
     {
         // fields 
         public string Name;
@@ -38,6 +38,50 @@ namespace Packt.CS7
         public static Person operator *(Person p1, Person p2)
         {
             return Person.Procreate(p1, p2);
+        }
+
+        //Defining local functions
+        //method with a local function
+        public static int Factorial(int number)
+        {
+            if (number < 0)
+            {
+                throw new ArgumentException($"{nameof(number)} cannot be less than zero.");
+            }
+            return localFactorial(number);
+
+            //Local functions can be defined anywhere inside a method:
+            int localFactorial(int localNumber)
+            {
+                if (localNumber < 1) return 1;
+                return localNumber * localFactorial(localNumber - 1);
+            }           
+        }
+
+        //Defining events
+        //event 
+        public event EventHandler Shout;
+
+        //field
+        public int AngerLevel;
+
+        //method
+        public void Poke()
+        {
+            AngerLevel++;
+            if (AngerLevel >= 3)
+            {
+                //if something is listening
+                if (Shout != null)
+                {
+                    Shout(this, EventArgs.Empty);
+                }
+            }
+        }
+
+        public int CompareTo(Person other)
+        {
+            return Name.CompareTo(other.Name);
         }
     }
 }
