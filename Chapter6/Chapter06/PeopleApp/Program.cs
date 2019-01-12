@@ -60,7 +60,7 @@ namespace PeopleApp
 
             //Defining a separate comparer
             WriteLine("use PersonComparer's IComparer implementation to sort:");
-            Array.Sort(people,new PersonComparer());
+            Array.Sort(people, new PersonComparer());
             foreach (var person in people)
             {
                 WriteLine($"{person.Name}");
@@ -81,6 +81,71 @@ namespace PeopleApp
 
             byte number2 = 3;
             WriteLine($"{number2} squared is {Squarer.Square<byte>(number2)}");
+
+            //Defining a struct type
+            var dv1 = new DisplacementVector(3, 5);
+            var dv2 = new DisplacementVector(-2, 7);
+            var dv3 = dv1 + dv2;
+            WriteLine($"({dv1.X}, {dv1.Y}) + ({dv2.X}, {dv2.Y}) = ({dv3.X},{dv3.Y})");
+
+            Employee e1 = new Employee
+            {
+                Name = "John Jones",
+                DateOfBirth = new DateTime(1990, 7, 28)
+            };
+
+            //Extending classes
+            e1.EmployeeCode = "JJ001";
+            e1.HireDate = new DateTime(2014, 11, 23);
+            WriteLine($"{e1.Name} was hired on {e1.HireDate:dd/MM/yy}");
+
+            WriteLine(e1.ToString());
+
+            //Polymorphism
+            Employee aliceInEmployee = new Employee { Name = "Alice", EmployeeCode="AA123"};
+            Person aliceInPerson = aliceInEmployee;
+            aliceInEmployee.WriteToConsole();
+            aliceInPerson.WriteToConsole();
+            WriteLine(aliceInEmployee.ToString());
+            WriteLine(aliceInPerson.ToString());
+
+            //Explicit casting
+            Employee e2 = (Employee)aliceInPerson;
+
+            //Handling casting exceptions
+            if (aliceInPerson is Employee)
+            {
+                WriteLine($"{nameof(aliceInPerson)} IS an Employee");
+                Employee e21 = (Employee)aliceInPerson;
+            }
+
+            Employee e3 = aliceInPerson as Employee;
+            if (e3 != null)
+            {
+                WriteLine($"{nameof(aliceInPerson)} AS an Employee");
+            }
+
+            //Inheriting from an exception
+            try
+            {
+                e1.TimeTravel(new DateTime(1992, 12, 31));
+            }
+            catch (PersonException ex)
+            {
+                WriteLine(ex.Message);
+            }
+
+            //Using static methods to reuse functionality
+            string email1 = "pamela@test.com";
+            string email2 = "ian&test.com";
+
+            WriteLine($"{email1} is a valid e-mail address: {StringExtensions.IsValidEmail(email1)}.");
+            WriteLine($"{email2} is a valid e-mail address: {StringExtensions.IsValidEmail(email2)}.");
+
+            //Using extension methods to reuse functionality
+            WriteLine($"{email1} is a valid e-mail address:{email1.IsValidEmail()}.");
+            WriteLine($"{email2} is a valid e-mail address:{email2.IsValidEmail()}.");
+
         }
 
         private static void Harry_Shout(object sender, EventArgs e)
@@ -91,7 +156,10 @@ namespace PeopleApp
         }
 
         //Attempting to sort objects without a method to compare
-       
+
         
+        
+
+
     }
 }
