@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.168
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WorkingWithFileSystems", "WorkingWithFileSystems\WorkingWithFileSystems.csproj", "{C76DBD5F-5363-4EBC-AC34-B3E0B1D044BF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WorkingWithStreams", "WorkingWithStreams\WorkingWithStreams.csproj", "{EC37FDC0-DBA8-4A6D-AB7B-D28F13603122}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C76DBD5F-5363-4EBC-AC34-B3E0B1D044BF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C76DBD5F-5363-4EBC-AC34-B3E0B1D044BF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C76DBD5F-5363-4EBC-AC34-B3E0B1D044BF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C76DBD5F-5363-4EBC-AC34-B3E0B1D044BF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EC37FDC0-DBA8-4A6D-AB7B-D28F13603122}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EC37FDC0-DBA8-4A6D-AB7B-D28F13603122}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EC37FDC0-DBA8-4A6D-AB7B-D28F13603122}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EC37FDC0-DBA8-4A6D-AB7B-D28F13603122}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {87531621-1036-461C-83BF-C22ECBDB6D13}
+	EndGlobalSection
+EndGlobal
