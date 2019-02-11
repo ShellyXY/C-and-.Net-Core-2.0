@@ -8,3 +8,5 @@ C# and .net core 2.0 学习笔记<br />
    6)Chapter6---Implementing Interfaces and Inheriting Classes<br />
    7)Chapter7---Understanding and Packaging .NET Standard Types<br />
    8)Chapter8---Using Common .NET Standard Types<br />
+   9)Chapter9---Working with Files,Streams,and Serialization<br/ >
+  10)Chapter10---Protecting Your Data and Applications<br />
