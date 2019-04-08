@@ -36,6 +36,9 @@ namespace Packet.CS7
                 .Property(category => category.CategoryName)
                 .IsRequired()
                 .HasMaxLength(40);
+
+            //global filter to remove discontinued products
+            modelBuilder.Entity<Product>().HasQueryFilter(p=>!p.Discontinued);
         }
     }
 }
